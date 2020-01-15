@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<!-- This is a sample integration of the Braze Web SDK.
+     Visit https://js.appboycdn.com/web-sdk/latest/sample-build/index.html to see a deployed instance of this page
+-->
+<html>
+
+<head>
+    <title>测试浏览器推送</title>
+    <script type="text/javascript">
+        Notification.requestPermission().then(permission => {
+            console.log(permission)
+        })
+        pushOneMessage = function () {
+            const opts = {
+                body:'我是推送的内容',
+                tag: 'tag1',
+                data:{'name':'gz'},
+                requireInteraction: false,
+
+            }
+            const note = new Notification('消息标题', opts)
+            note.onclick = (data) => {
+                console.log(data);
+            }
+        }
+    </script>
+</head>
+
+<body>
+    测试浏览器推送
+    <br /><br />
+    <!-- This App Group has a triggered push campaign tied to the "send me push" custom event -->
+    <button onclick="pushOneMessage()">推一个我看看</button>
+</body>
+
+</html>
